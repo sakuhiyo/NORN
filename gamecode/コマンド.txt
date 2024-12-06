@@ -1,0 +1,29 @@
+cd \
+
+python -m ensurepip --upgrade
+
+streamlit_env\Scripts\activate
+
+python -m ensurepip --upgrade
+
+path\to\env\Scripts\activate
+
+pip show streamlit
+
+cd "C:\Users\shizuki.asakura.18\Desktop\gamecode"
+
+streamlit run main.py
+
+git add app.py
+
+git commit -m "アプリの修正: ○○を追加"
+
+git push origin main
+
+git branch -M main
+git push -u origin main
+
+
+
+各ゲームのソースコードを個別の .py ファイルとして保存。
+例: darts_shooting.py, gravity_roulette.py, plasma_dice.py, hologram_slot.py
