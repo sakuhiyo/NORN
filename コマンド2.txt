@@ -1,0 +1,22 @@
+streamlit --version
+python --version
+
+pip install streamlit
+python -m ensurepip --upgrade
+
+#テスト用
+streamlit hello
+
+#仮想環境を作成
+python -m venv streamlit-env
+
+#仮想環境を有効化
+streamlit-env\Scripts\activate
+
+#仮想環境へインストール
+pip install streamlit
+
+
+cd "C:\Users\sakuh\Dropbox\gamecode"
+
+streamlit run main.py
