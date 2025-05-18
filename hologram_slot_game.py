@@ -98,7 +98,10 @@ def hologram_slot(dex, pow_stat):
                     target = max(slot_rolls)
                     slot_rolls = [target] * 3
 
-            
+            # 目押し反映後の絵柄と合計点を表示
+            slot_emoji_display_after = " | ".join([slot_emojis[roll] for roll in slot_rolls])
+            st.write(f"目押し反映後: {slot_emoji_display_after} → 合計: {sum(slot_rolls)}")
+                        
             # ゾロ目ボーナス判定
             if len(set(slot_rolls)) == 1:
                 base_score = sum(slot_rolls) * 2 + 10
