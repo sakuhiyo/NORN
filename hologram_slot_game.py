@@ -76,17 +76,28 @@ def hologram_slot(dex, pow_stat):
             # 目押しによる出目変更（ゾロ目優先）
             if dex_total >= 15:
                 if dex_total < 20:
+                    # 1つだけ変更（ゾロ目優先）
                     if len(set(slot_rolls)) > 1:
                         target = max(slot_rolls, key=slot_rolls.count)
-                        slot_rolls[slot_rolls.index(min(slot_rolls))] = target
+                        for i in range(3):
+                            if slot_rolls[i] != target:
+                                slot_rolls[i] = target
+                                break
                 elif dex_total < 25:
+                    # 2つ変更（ゾロ目優先）
                     target = max(slot_rolls, key=slot_rolls.count)
-                    for i in range(2):
-                        slot_rolls[slot_rolls.index(min(slot_rolls))] = target
+                    changed = 0
+                    for i in range(3):
+                        if slot_rolls[i] != target:
+                            slot_rolls[i] = target
+                            changed += 1
+                            if changed >= 2:
+                                break
                 else:
-                    slot_rolls = [max(slot_rolls)] * 3
-            
-            st.write(f"目押し反映後: {' | '.join([slot_emojis[roll] for roll in slot_rolls])} → 合計: {sum(slot_rolls)}")
+                    # 3つ変更（ゾロ目確定）
+                    target = max(slot_rolls)
+                    slot_rolls = [target] * 3
+
             
             # ゾロ目ボーナス判定
             if len(set(slot_rolls)) == 1:
