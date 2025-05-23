@@ -73,34 +73,27 @@ def hologram_slot(dex, pow_stat):
             dex_total = dex + dex_roll
             st.write(f"目押し判定（DEX判定）: {dex} + 1d10({dex_roll}) → {dex_total}")
             
-            # 目押しによる出目変更（ゾロ目優先）
-            if dex_total >= 15:
-                if dex_total < 20:
-                    # 1つだけ変更（ゾロ目優先）
-                    if len(set(slot_rolls)) > 1:
-                        target = max(slot_rolls, key=slot_rolls.count)
-                        for i in range(3):
-                            if slot_rolls[i] != target:
-                                slot_rolls[i] = target
-                                break
-                elif dex_total < 25:
-                    # 2つ変更（ゾロ目優先）
-                    target = max(slot_rolls, key=slot_rolls.count)
-                    changed = 0
-                    for i in range(3):
-                        if slot_rolls[i] != target:
-                            slot_rolls[i] = target
-                            changed += 1
-                            if changed >= 2:
-                                break
-                else:
-                    # 3つ変更（ゾロ目確定）
-                    target = max(slot_rolls)
-                    slot_rolls = [target] * 3
-
-            # 目押し反映後の絵柄と合計点を表示
-            slot_emoji_display_after = " | ".join([slot_emojis[roll] for roll in slot_rolls])
-            st.write(f"目押し反映後: {slot_emoji_display_after} → 合計: {sum(slot_rolls)}")
+            # 目押しによる出目変更（ゾロ目優先＋高得点優先）
+            changeable = 0
+            if dex_total >= 15 and dex_total < 20:
+                changeable = 1
+            elif dex_total >= 20 and dex_total < 25:
+                changeable = 2
+            elif dex_total >= 25:
+                # 強制最大ゾロ目
+                slot_rolls = [6, 6, 6]
+                st.write(f"目押し反映後: {' | '.join([slot_emojis[roll] for roll in slot_rolls])} → 合計: {sum(slot_rolls)}")
+            if 0 < changeable < 3:
+                candidates = []
+                for t in range(1, 7):
+                    count = slot_rolls.count(t)
+                    needed = 3 - count
+                    if needed <= changeable:
+                        candidates.append((t, needed))
+                if candidates:
+                    best_target = max(candidates, key=lambda x: x[0])  # 値の大きいゾロ目を優先
+                    slot_rolls = [best_target[0]] * 3
+                st.write(f"目押し反映後: {' | '.join([slot_emojis[roll] for roll in slot_rolls])} → 合計: {sum(slot_rolls)}")
                         
             # ゾロ目ボーナス判定
             if len(set(slot_rolls)) == 1:
