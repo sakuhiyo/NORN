@@ -136,9 +136,9 @@ def main():
         border-radius: 10px;
     }
 
-    /* スライダー現在値の文字色変更 */
-    .stSlider > div[data-baseweb="slider"] > div > div:nth-child(2) {
-        color: #333333;  /* チャコールグレー */
+    /* スライダーの現在値の文字色 */
+    div[data-testid="stSlider"] span {
+        color: #333333 !important;
         font-weight: bold;
     }
     </style>
