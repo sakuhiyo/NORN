@@ -58,9 +58,15 @@ def gravity_roulette(str, con):
         st.write(gravity_message)
 
         # 基本得点の計算
-        base_score = sum([random.randint(1, 6) for _ in range(3)]) + gravity_bonus
+        # 修正後
+        dice_rolls = [random.randint(1, 6) for _ in range(3)]
+        dice_total = sum(dice_rolls)
+        base_score = dice_total + gravity_bonus
         st.subheader("⚙️ 結果")
-        st.write(f"3d6の合計 → 基本得点: {base_score}点")
+        st.write(f"3d6の出目: {dice_rolls} → 合計: {dice_total}点")
+        if gravity_bonus > 0:
+            st.write(f"無重力ボーナス: +{gravity_bonus}点")
+        st.write(f"基本得点（ボーナス込み）: {base_score}点")
 
         # STR判定
         str_random = random.randint(1, 10)  # 1d10の結果
