@@ -126,6 +126,23 @@ def main():
         """,
         unsafe_allow_html=True,
     )
+    st.markdown("""
+    <style>
+    /* スライダーのノブ（つまみ）の色 */
+    .stSlider > div[data-baseweb="slider"] > div > div {
+        background-color: #ede4c7; /* ノブの色 */
+        border: 1px solid #4e454a; /* ノブの枠線色 */
+        padding:2px;
+        border-radius: 10px;
+    }
+
+    /* スライダー現在値の文字色変更 */
+    .stSlider > div[data-baseweb="slider"] > div > div:nth-child(2) {
+        color: #333333;  /* チャコールグレー */
+        font-weight: bold;
+    }
+    </style>
+""", unsafe_allow_html=True)
 
     st.markdown("""
         <style>
