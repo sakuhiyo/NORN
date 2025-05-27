@@ -137,7 +137,7 @@ def main():
     }
 
     /* スライダーの現在値の文字色 */
-    div[data-testid="stSlider"] span {
+    div[data-baseweb="slider"] > div[role="presentation"] > div {
         color: #333333 !important;
         font-weight: bold;
     }
