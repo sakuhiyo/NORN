@@ -94,15 +94,6 @@ def darts_shooting(dex, spd):
         else:
             base_score += 10 * upgrade
 
-        # 昇格処理
-        if level < 3:
-            new_level = min(level + upgrade, 3)
-            level = new_level
-            base_score = [10, 15, 20, 30][level]
-        else:
-            # 既にブルの場合は+10点ずつ加算
-            base_score += 10 * upgrade
-
         # レベルに応じたラベル
         zone_labels = ["シングル", "ダブル", "トリプル", "ブル"]
         zone = zone_labels[level]
