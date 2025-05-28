@@ -49,20 +49,20 @@ def darts_shooting(dex, spd):
 
     # プレイ処理
     if st.session_state["play_count"] < 4 and st.button("プレイする", key="darts_shooting_play_button"):
-    # 基本得点の判定（出目に応じて階層を割り当て）
-       base_roll = random.randint(1, 6)
-    if base_roll <= 2:
-        base_score = 10
-        level = 0
-        zone = "シングル"
-    elif base_roll <= 4:
-        base_score = 15
-        level = 1
-        zone = "ダブル"
-    else:
-        base_score = 20
-        level = 2
-        zone = "トリプル"
+        # 基本得点の判定（出目に応じて階層を割り当て）
+        base_roll = random.randint(1, 6)
+        if base_roll <= 2:
+            base_score = 10
+            level = 0
+            zone = "シングル"
+        elif base_roll <= 4:
+            base_score = 15
+            level = 1
+            zone = "ダブル"
+        else:
+            base_score = 20
+            level = 2
+            zone = "トリプル"
 
         # 基礎得点を表示
         st.subheader("🎯 結果")
@@ -155,4 +155,4 @@ def darts_shooting(dex, spd):
         st.session_state["play_count"] += 1
         st.success("プレイしました！次の日までお待ちください。")
     elif st.session_state["play_count"] >= 4:
-    st.error("本日のプレイ回数を超えました。")
+        st.error("本日のプレイ回数を超えました。")
