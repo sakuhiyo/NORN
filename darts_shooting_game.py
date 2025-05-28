@@ -96,23 +96,6 @@ def darts_shooting(dex, spd):
         zone = zone_labels[level]
         st.write(f"昇格後得点: {base_score}点（{zone}）")
 
-
-        # 昇格後得点のラベル付け
-        if base_score == 10:
-            final_zone = "外周"
-        elif base_score == 15:
-            final_zone = "中間"
-        elif base_score == 20 or base_score == 25:
-            final_zone = "中心"
-        elif base_score == 30:
-            final_zone = "中心+"
-        elif base_score == 40:
-            final_zone = "中心++"
-        else:
-            final_zone = "不明"
-
-        st.write(f"昇格後得点: {base_score}点（{final_zone}）")
-
         # SPD判定
         spd_random = random.randint(1, 10)  # 1d10の結果
         spd_roll = spd + spd_random
