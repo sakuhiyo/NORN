@@ -82,6 +82,19 @@ def darts_shooting(dex, spd):
         elif dex_roll >= 25:
             upgrade = 3
 
+        # DEXによる昇格処理（ブル到達後の余剰昇格分も得点化）
+        if level < 3:
+            new_level = level + upgrade
+            if new_level <= 3:
+                level = new_level
+                base_score = [10, 15, 20, 30][level]
+            else:
+                level = 3  # ブル固定
+                base_score = 30 + 10 * (new_level - 3)  # 余剰昇格段階ごとに+10点
+        else:
+            # 既にブルの場合は+10点ずつ加算
+            base_score += 10 * upgrade
+
         # 昇格処理
         if level < 3:
             new_level = min(level + upgrade, 3)
