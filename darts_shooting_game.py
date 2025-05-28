@@ -96,6 +96,7 @@ def darts_shooting(dex, spd):
         zone = zone_labels[level]
         st.write(f"昇格後得点: {base_score}点（{zone}）")
 
+
         # 昇格後得点のラベル付け
         if base_score == 10:
             final_zone = "外周"
@@ -154,4 +155,4 @@ def darts_shooting(dex, spd):
         st.session_state["play_count"] += 1
         st.success("プレイしました！次の日までお待ちください。")
     elif st.session_state["play_count"] >= 4:
-        st.error("本日のプレイ回数を超えました。")
+    st.error("本日のプレイ回数を超えました。")
