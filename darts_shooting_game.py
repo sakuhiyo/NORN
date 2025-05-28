@@ -89,10 +89,9 @@ def darts_shooting(dex, spd):
                 level = new_level
                 base_score = [10, 15, 20, 30][level]
             else:
-                level = 3  # ブル固定
-                base_score = 30 + 10 * (new_level - 3)  # 余剰昇格段階ごとに+10点
+                level = 3
+                base_score = 30 + 10 * max(0, new_level - 3)
         else:
-            # 既にブルの場合は+10点ずつ加算
             base_score += 10 * upgrade
 
         # 昇格処理
