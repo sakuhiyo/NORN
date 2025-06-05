@@ -131,11 +131,11 @@ def plasma_dice(pow,int):
             # 条件による影響を解説
             st.write("### 条件による影響")
             if multiplier == 0.5:
-                st.write("重力耐性（CON判定）の結果により、得点が半減しました。")
+                st.write("エネルギー制御（INT判定）の結果により、得点が半減しました。")
             elif multiplier == 3:
-                st.write("重力耐性（CON判定）の結果により、得点が3倍になりました。")
-            elif multiplier == 4:
-                st.write("最高倍率！ 得点が4倍になりました。")
+                st.write("エネルギー制御（INT判定）の結果により、得点が3倍になりました。")
+            elif multiplier == 2:
+                st.write("エネルギー制御（INT判定）の結果により、得点が2倍になりました。")
 
             if plasma_bonus == 0.5:
                 st.write("プラズマボーナスの結果により、得点が半減しました。")
